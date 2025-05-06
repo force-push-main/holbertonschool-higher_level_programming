@@ -2,4 +2,4 @@
 
 for i in "abcdefghijklmnopqrstuvwxyz":
     if (i != 'q' and i != 'e'):
-        print(f"{i}", end="")
+        print("{}".format(i), end="")
