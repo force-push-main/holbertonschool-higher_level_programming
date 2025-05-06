@@ -2,5 +2,4 @@
 str = "Python is an interpreted, interactive, object-oriented programming\
  language that combines remarkable power with very clear syntax"
 str = str.split()
-str = f"{str[5]} {str[6]} {str[-4]} {str[0]}"
-print(str)
+print(f"{str[5]} {str[6]} {str[-4]} {str[0]}")
