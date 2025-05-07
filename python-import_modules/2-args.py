@@ -11,3 +11,6 @@ def main(*argv):
         print("{} arguments:")
     for i, arg in enumerate(argv, start=1):
         print("{}: {}".format(i, arg))
+
+if __name__ == "__main__":
+    main()
