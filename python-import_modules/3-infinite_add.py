@@ -9,7 +9,6 @@ def main():
 
     for num in argv:
         result += int(num)
-    
     print(result)
 
 
