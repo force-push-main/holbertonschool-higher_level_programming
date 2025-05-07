@@ -11,7 +11,7 @@ def main():
     elif num_args == 1:
         print("{} argument:".format(num_args))
     else:
-        print("{} arguments:")
+        print("{} arguments:".format(num_args))
     for i, arg in enumerate(argv, start=1):
         print("{}: {}".format(i, arg))
 
