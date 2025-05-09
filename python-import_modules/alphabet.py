@@ -1,1 +1,1 @@
-alphabet = "abcdefghijklmnopqrstuvwxyz"
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
