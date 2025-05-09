@@ -2,6 +2,7 @@
 from calculator_1 import add, sub, mul, div
 from sys import argv
 
+
 def main():
     args = argv[1:]
     calc_fncs = {
@@ -19,7 +20,7 @@ def main():
     else:
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
-    print("{} + {} = {}".format(args[0], args[2], result))
+    print("{} {} {} = {}".format(args[0], args[1], args[2], result))
 
 
 if __name__ == "__main__":
