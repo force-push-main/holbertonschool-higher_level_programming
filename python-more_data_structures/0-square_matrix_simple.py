@@ -2,7 +2,7 @@
 
 def square_matrix_simple(matrix=[]):
     squared = matrix.copy()
-    for i in range(len(matrix)):
-        for j in range(len(matrix[i])):
-            squared[i][j] = matrix[i][j]**2
+    for i in range(len(squared)):
+        for j in range(len(squared[i])):
+            squared[i][j]**2
     return squared
