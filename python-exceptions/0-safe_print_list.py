@@ -2,12 +2,12 @@
 
 def safe_print_list(my_list=[], x=0):
     chars_printed = 0
-    for num in my_list:
+    for i in range(x):
         try:
-            print("{}".format(num), end="")
+            print("{}".format(my_list[i]), end="")
             chars_printed = chars_printed + 1
         except:
-            print("\n")
+            print("")
             return chars_printed
-    print("\n")
+    print("")
     return chars_printed
