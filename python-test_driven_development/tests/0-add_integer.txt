@@ -1,0 +1,18 @@
+    >>> add_integer = __import__('0-add_integer').add_integer
+    >>> add_integer(2, 3)
+    5
+
+    >>> add_integer(2.0, 3.0)
+    5
+
+    >>> add_integer(2.0, -3)
+    -1
+
+    >>> add_integer("hello", 3)
+    a must be an integer
+
+    >>> add_integer(3, "hello")
+    b must be an integer
+
+    >>> add_integer(None)
+    a must be an integer
