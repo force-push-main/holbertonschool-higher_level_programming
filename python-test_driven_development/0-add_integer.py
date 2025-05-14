@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 # 0-add_integer.py
+"""simple addition function"""
 
 def add_integer(a, b=98):
+    """ returns sum of a and b"""
     try:
         if not isinstance(a, int) and not isinstance(a, float):
             raise TypeError("a must be an integer")
