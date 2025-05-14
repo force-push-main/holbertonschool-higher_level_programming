@@ -9,8 +9,3 @@ def add_integer(a, b=98):
     if not isinstance(b, int) and not isinstance(b, float):
         raise TypeError("b must be an integer")
     return (int(a) + int(b))
-
-try:
-    print(add_integer(4, "School"))
-except Exception as e:
-    print(e)
