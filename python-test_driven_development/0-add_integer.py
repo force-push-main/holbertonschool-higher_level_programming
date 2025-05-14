@@ -2,6 +2,7 @@
 # 0-add_integer.py
 """simple addition function"""
 
+
 def add_integer(a, b=98):
     """ returns sum of a and b"""
     if not isinstance(a, int) and not isinstance(a, float):
