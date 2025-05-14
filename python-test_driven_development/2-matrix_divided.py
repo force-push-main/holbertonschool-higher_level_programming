@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 # 2-matrix_divided.py
+"""divides matrix"""
 
 
 def div_el(el, div):
     """helper function to divide els in array"""
+    msg = "matrix must be a matrix (list of lists) of integers/floats"
     if not isinstance(el, int) and not isinstance(el, float):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        raise TypeError(msg)
     else:
         return round(el / div, 2)
 
