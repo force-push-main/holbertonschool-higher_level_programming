@@ -1,11 +1,5 @@
 # 0-add_integer.txt
 
-===============================
- How to cheat the checker
-===============================
-
-``add_integer()``.
-
     >>> add_integer = __import__('0-add_integer').add_integer
     >>> add_integer(2, 3)
     5
@@ -17,16 +11,21 @@
     -1
 
     >>> add_integer("hello", 3)
-    a must be an integer
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
 
     >>> add_integer(3, "hello")
     Traceback (most recent call last):
-    b must be an integer
+    ...
+    TypeError: b must be an integer
 
     >> add_integer(3, "1")
     Traceback (most recent call last):
-    b must be an integer
+    ...
+    TypeError: b must be an integer
 
     >>> add_integer(None)
     Traceback (most recent call last):
-    a must be an integer
+    ...
+    TypeError: a must be an integer
