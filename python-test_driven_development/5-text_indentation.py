@@ -9,9 +9,11 @@ def text_indentation(text):
     spec_chars = ['.', '?', ':']
     printed_newline = False
     for c in text:
-        if printed_newline:
+        if printed_newline and c == ' ':
             printed_newline = False
             continue
+        else:
+            printed_newline = False
         if c in spec_chars:
             print(f"{c}\n")
             printed_newline = True
