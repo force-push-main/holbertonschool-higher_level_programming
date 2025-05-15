@@ -9,7 +9,7 @@ def text_indentation(text):
     spec_chars = ['.', '?', ':']
     printed_newline = False
     for c in text:
-        if printed_newline and c == ' ':
+        if printed_newline and (c == ' ' or c == '  '):
             printed_newline = False
             continue
         else:
