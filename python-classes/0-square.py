@@ -2,6 +2,7 @@
 
 """this function declares a class for a square object"""
 
+
 class Square:
     """this is a square object. It is empty"""
     pass
