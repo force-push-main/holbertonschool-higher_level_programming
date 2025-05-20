@@ -7,11 +7,13 @@ class Rectangle:
     """an class for a rectangle object"""
 
     number_of_instances = 0
+    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
         Rectangle.number_of_instances = Rectangle.number_of_instances + 1
+        self.print_symbol = Rectangle.print_symbol
 
     @property
     def width(self):
@@ -53,13 +55,13 @@ class Rectangle:
         if (self.__height == 0 or
                 self.__width == 0):
             return ""
-        str = ""
+        string = ""
         for _ in range(self.__height):
             for _ in range(self.__width):
-                str += "#"
-            str += "\n"
-        str = str[:-1]
-        return str
+                string += str(self.print_symbol)
+            string += "\n"
+        string = string[:-1]
+        return string
 
     def __repr__(self):
         string = ("Rectangle(" + str(self.__width) +
