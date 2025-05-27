@@ -26,6 +26,6 @@
     >>> my_list.print_sorted()
     []
 
-    >>> my_list = MyList(['h'])
-    >>> my_list.print_sorted()
-    ['h']
+    >>> my_list = MyList([4, 5, 6])
+    >>> my_list.__str__()
+    '[4, 5, 6]'
