@@ -16,16 +16,12 @@ class Shape(ABC):
 
 class Circle(Shape):
     def __init__(self, radius):
-        self.radius = radius
-    
+        self.radius = abs(radius)
+
     def area(self):
-        if self.radius < 0:
-            self.radius * -1
         return pi * self.radius ** 2
 
     def perimeter(self):
-        if self.radius < 0:
-            self.radius * -1
         return 2 * pi * self.radius
 
 
@@ -41,14 +37,18 @@ class Rectangle(Shape):
         return self.width * 2 + self.height * 2
 
 
-def has_method(obj, method):
-    attr = getattr(obj, method, None)
-    if callable(attr):
-        return True
-    return False
+# def has_method(obj, method):
+#     attr = getattr(obj, method, None)
+#     if callable(attr):
+#         return True
+#     return False
 
+
+# def shape_info(obj):
+#     if has_method(obj, "area") and has_method(obj, "perimeter"):
+#         print(obj.area())
+#         print(obj.perimeter())
 
 def shape_info(obj):
-    if has_method(obj, "area") and has_method(obj, "perimeter"):
-        print(obj.area())
-        print(obj.perimeter())
+    print(f"Area: {obj.area()}")
+    print(f"Perimeter: {obj.perimeter()}")
