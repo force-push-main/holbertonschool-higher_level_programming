@@ -2,8 +2,9 @@
 """function that writes to file and returns len"""
 
 
-def write_file(filename="", text=""):
-    """aforementioned function"""
-    with open(filename, "w") as file:
+def append_write(filename="", text=""):
+    """the append_write function"""
+
+    with open(filename, "a") as file:
         str_len = file.write(text)
         return str_len
