@@ -31,7 +31,7 @@ class SamServer(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"404 Not Found: The requested resource was not found on this server.")
+            self.wfile.write(b"404 Not Found: Endpoint not found")
 
 
 server = HTTPServer(('', 8000), SamServer)
