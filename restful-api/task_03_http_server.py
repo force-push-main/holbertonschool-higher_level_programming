@@ -17,7 +17,9 @@ class SamServer(BaseHTTPRequestHandler):
 
         elif self.path == "/status":
             self.send_response(200)
+            self.send_header("Content-type", "text/plain")
             self.end_headers()
+            self.wfile.write(b"The API works")
 
         elif self.path == '/':
             self.send_response(200, "Hello, this is a simple API!")
@@ -27,7 +29,9 @@ class SamServer(BaseHTTPRequestHandler):
 
         else:
             self.send_response(404, "page does not exist")
+            self.send_header("Content-type", "text/plain")
             self.end_headers()
+            self.wfile.write(b"page does not exist")
 
 
 server = HTTPServer(('', 8000), SamServer)
