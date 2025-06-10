@@ -19,7 +19,7 @@ class SamServer(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"The API works")
+            self.wfile.write(b"OK")
 
         elif self.path == '/':
             self.send_response(200, "Hello, this is a simple API!")
@@ -28,7 +28,7 @@ class SamServer(BaseHTTPRequestHandler):
             self.wfile.write(b"Hello, this is a simple API!")
 
         else:
-            self.send_response(404, "page does not exist")
+            self.send_response(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"page does not exist")
