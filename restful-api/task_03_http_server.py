@@ -28,11 +28,12 @@ class SamServer(BaseHTTPRequestHandler):
             self.wfile.write(b"Hello, this is a simple API!")
 
         else:
-            self.send_response(404, "Endpoint not found")
+            self.send_response(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"404 Not Found: Endpoint not found")
+            self.wfile.write(b"Endpoint not found")
 
 
 server = HTTPServer(('', 8000), SamServer)
 server.serve_forever()
+server.server_close()
