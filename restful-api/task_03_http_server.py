@@ -31,7 +31,7 @@ class SamServer(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"page does not exist")
+            self.wfile.write(b"404 Not Found: page does not exist")
 
 
 server = HTTPServer(('', 8000), SamServer)
