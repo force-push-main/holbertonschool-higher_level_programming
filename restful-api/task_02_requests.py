@@ -13,6 +13,7 @@ def fetch_and_print_posts():
     if r.status_code != 200:
         return
 
+    print(f"Status Code: {r.status_code}")
     data = r.json()
 
     for posts in data:
