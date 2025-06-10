@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """a function to request data"""
 import requests
-import json
 import csv
 
 
@@ -29,9 +28,10 @@ def fetch_and_save_posts():
         return
 
     data = r.json()
+    headers = ['id', 'title', 'body']
+    # data_header = data[0].values()
 
     with open('posts.csv', 'w') as f:
-        writer = csv.writer(f)
-        writer.writerow(data[0].keys())
-        for rows in data:
-            writer.writerow(rows.values())
+        writer = csv.DictWriter(f, extrasaction='ignore', fieldnames=headers)
+        writer.writeheader()
+        writer.writerows(data)
