@@ -3,12 +3,7 @@ from flask import Flask, request
 app = Flask(__name__)
 app.json.sort_keys = False
 
-users = {"alice": {
-        "username": "alice",
-        "name": "Alice",
-        "age": 25,
-        "city": "San Francisco"
-}}
+users = {}
 
 @app.route('/')
 def home():
