@@ -23,7 +23,7 @@ def api_status():
 @app.route('/users/<username>')
 def get_user(username):
     if username not in users:
-        return {"error": "User not found"}
+        return {"error": "User not found"}, 400
     return users[username]
 
 
