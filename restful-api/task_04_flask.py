@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, request
+from flask import Flask, request
 
 app = Flask(__name__)
+app.json.sort_keys = False
 
 users = {"alice": {
         "username": "alice",
@@ -33,10 +34,19 @@ def get_user(username):
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
-    data = request.data
+    data = request.json
     if data is None:
-        return {"error": "Username is required"}
-    return data
+        return {"error": "Username is required"}, 400
+    required_keys = {"username", "name", "age", "city"}
+    if not required_keys.issubset(data.keys()):
+        return {"error": "Username is required"}, 400
+ 
+    users[data["username"]] = data
+
+    return {
+        "message": "User added",
+        "user": data
+    }, 201
 
 if __name__ == "__main__": 
     app.run()
