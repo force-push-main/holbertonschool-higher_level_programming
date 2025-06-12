@@ -29,18 +29,6 @@ def is_user(username, password):
         return username
     return None
 
-# def admin_required():
-#     def wrapper(fn):
-#         @wraps(fn)
-#         def decorator(*args, **kwargs):
-#             verify_jwt_in_request()
-#             claims = get_jwt()
-#             if claims["is_admin"]:
-#                 return fn(*args, **kwargs)
-#             else:
-#                 return jsonify(msg={{"error": "Admin access required"}}), 403
-#         return decorator
-#     return wrapper
 
 @app.route('/')
 def home():
@@ -58,12 +46,14 @@ def login():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
-    user = users.get(username)
-    if user and check_password_hash(user['password'], password):
-        access_token = create_access_token(identity={'username': username, 'role': user['role']})
-        return jsonify(access_token=access_token)
+    if (username not in users or 
+            check_password_hash(users[username]["password"], password)):
+        return jsonify({"error": "Invalid credentials"}), 401
 
-    return jsonify({"error": "Invalid credentials"}), 401
+    access_token = create_access_token(
+        identity={"username": username, "role": users[username]['role']}
+        )
+    return jsonify(access_token=access_token)
 
 
 @app.route('/jwt-protected')
@@ -73,12 +63,14 @@ def protected_route():
 
 
 @app.route('/admin-only')
-@jwt_required()
+@jwt_required
 def admin_page():
     current_user = get_jwt_identity()
     if current_user["role"] == "admin":
-        return "Admin Access: Granted"
-    return jsonify({"error": "Admin access required"}), 403
+        return "Admin Access: Granted",
+    else:
+        return jsonify({"error": "Admin access required"}), 403
+
 
 @jwt.unauthorized_loader
 def handle_unauthorized_error(err):
@@ -86,7 +78,7 @@ def handle_unauthorized_error(err):
 
 @jwt.invalid_token_loader
 def handle_invalid_token_error(err):
-    return jsonify({"error": "Admin access token"}), 401
+    return jsonify({"error": "Invalid token"}), 401
 
 @jwt.expired_token_loader
 def handle_expired_token_error(err):
