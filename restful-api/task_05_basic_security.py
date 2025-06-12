@@ -64,7 +64,7 @@ def protected_route():
 def admin_page():
     current_user = get_jwt_identity()
     if current_user["role"] == "admin":
-        return "Admin Access: Granted",
+        return "Admin Access: Granted"
     else:
         return jsonify({"error": "Admin access required"}), 403
 
