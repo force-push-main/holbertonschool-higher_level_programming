@@ -58,14 +58,12 @@ def login():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
-    if (username not in users or 
-            check_password_hash(users[username]["password"], password)):
-        return "401 Unauthorized", 401
+    user = users.get(username)
+    if user and check_password_hash(user['password'], password):
+        access_token = create_access_token(identity={'username': username, 'role': user['role']})
+        return jsonify(access_token=access_token)
 
-    access_token = create_access_token(
-        identity={"username": username, "role": users[username]['role']}
-        )
-    return jsonify(access_token=access_token)
+    return jsonify({"error": "Invalid credentials"}), 401
 
 
 @app.route('/jwt-protected')
@@ -79,7 +77,7 @@ def protected_route():
 def admin_page():
     current_user = get_jwt_identity()
     if current_user["role"] == "admin":
-        return "Admin Access: Granted"
+        return "Admin Access: Granted", 200
     else:
         return jsonify({"error": "Admin access required"}), 403
 
