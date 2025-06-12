@@ -73,13 +73,12 @@ def protected_route():
 
 
 @app.route('/admin-only')
-@jwt_required
+@jwt_required()
 def admin_page():
     current_user = get_jwt_identity()
     if current_user["role"] == "admin":
-        return "Admin Access: Granted", 200
-    else:
-        return jsonify({"error": "Admin access required"}), 403
+        return "Admin Access: Granted"
+    return jsonify({"error": "Admin access required"}), 403
 
 @jwt.unauthorized_loader
 def handle_unauthorized_error(err):
@@ -87,7 +86,7 @@ def handle_unauthorized_error(err):
 
 @jwt.invalid_token_loader
 def handle_invalid_token_error(err):
-    return jsonify({"error": "Invalid token"}), 401
+    return jsonify({"error": "Admin access token"}), 401
 
 @jwt.expired_token_loader
 def handle_expired_token_error(err):
