@@ -60,7 +60,7 @@ def protected_route():
 
 
 @app.route('/admin-only')
-@jwt_required
+@jwt_required()
 def admin_page():
     current_user = get_jwt_identity()
     if current_user["role"] == "admin":
