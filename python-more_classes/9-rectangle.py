@@ -40,6 +40,16 @@ class Rectangle:
     def square(cls, size=0):
         return cls(size, size)
 
+    def area(self):
+        return self.__height * self.__width
+
+    def perimeter(self):
+        if (self.__height != 0 and
+                self.__width != 0):
+            return self.__height * 2 + self.__width * 2
+        else:
+            return 0
+
     @property
     def width(self):
         return self.__width
@@ -66,16 +76,7 @@ class Rectangle:
         else:
             self.__height = value
 
-    def area(self):
-        return self.__height * self.__width
-
-    def perimeter(self):
-        if (self.__height != 0 and
-                self.__width != 0):
-            return self.__height * 2 + self.__width * 2
-        else:
-            return 0
-
+    @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
@@ -85,3 +86,19 @@ class Rectangle:
             return rect_1
         else:
             return rect_2
+
+my_rectangle_1 = Rectangle(8, 4)
+my_rectangle_2 = Rectangle(2, 3)
+
+if my_rectangle_1 is Rectangle.bigger_or_equal(my_rectangle_1, my_rectangle_2):
+    print("my_rectangle_1 is bigger or equal to my_rectangle_2")
+else:
+    print("my_rectangle_2 is bigger than my_rectangle_1")
+
+
+my_rectangle_2.width = 10
+my_rectangle_2.height = 5
+if my_rectangle_1 is Rectangle.bigger_or_equal(my_rectangle_1, my_rectangle_2):
+    print("my_rectangle_1 is bigger or equal to my_rectangle_2")
+else:
+    print("my_rectangle_2 is bigger than my_rectangle_1")
