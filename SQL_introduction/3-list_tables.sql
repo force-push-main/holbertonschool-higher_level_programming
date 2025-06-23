@@ -1,0 +1,1 @@
+-- lists all tables in database
