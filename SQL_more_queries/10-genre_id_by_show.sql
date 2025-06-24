@@ -1,5 +1,5 @@
 -- list shows with one linked genre
 SELECT tv_shows.title, tv_show_genres.genre_id
 FROM tv_shows
-INNER JOIN tv_show_genres on tv_show_genres.genre_id = tb_shows.id
+INNER JOIN tv_show_genres on tv_show_genres.genre_id = tv_shows.id
 ORDER BY tv_shows.title ASC, tv_show_genres.genre_id ASC;
