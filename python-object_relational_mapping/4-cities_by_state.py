@@ -11,10 +11,10 @@ if __name__ == '__main__':
         user=sys.argv[1], password=sys.argv[2], database=sys.argv[3]
         )
     c = db.cursor()
-    c.execute("""SELECT cities.id, cities.name, state.name
+    c.execute("""SELECT cities.id, cities.name, states.name
               FROM cities
-              INNER JOIN state
-              ON state.id = cities.id
+              INNER JOIN states
+              ON states.id = cities.id
               ORDER BY cities.id ASC"""
               )
     rows = c.fetchall()
