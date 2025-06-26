@@ -13,7 +13,7 @@ if __name__ == '__main__':
     c = db.cursor()
     c.execute("""SELECT states.id, states.name
               FROM states
-              WHERE states.name LIKE 'N%'
+              WHERE states.name LIKE BINARY 'N%'
               ORDER BY states.id ASC""")
     rows = c.fetchall()
     for row in rows:
