@@ -11,11 +11,10 @@ if __name__ == '__main__':
         user=sys.argv[1], password=sys.argv[2], database=sys.argv[3]
         )
     c = db.cursor()
-    search_params = sys.argv[4]
     c.execute("""SELECT states.id, states.name
               FROM states
-              WHERE states.name LIKE BINARY '%s%'
-              ORDER BY states.id ASC""", ('N', ))
+              WHERE states.name LIKE BINARY '%s%%'
+              ORDER BY states.id ASC""", (sys.argv[4], ))
     rows = c.fetchall()
     for row in rows:
         print(row)
