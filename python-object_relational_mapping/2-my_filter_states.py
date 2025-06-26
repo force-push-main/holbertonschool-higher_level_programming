@@ -14,7 +14,7 @@ if __name__ == '__main__':
     c.execute("""SELECT states.id, states.name
               FROM states
               WHERE states.name LIKE BINARY '{str}%'
-              ORDER BY states.id ASC""".format(str = sys.argv[4],))
+              ORDER BY states.id ASC""".format(str=sys.argv[4],))
     rows = c.fetchall()
     for row in rows:
         print(row)
