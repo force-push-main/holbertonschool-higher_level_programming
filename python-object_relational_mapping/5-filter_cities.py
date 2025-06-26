@@ -24,4 +24,4 @@ if __name__ == "__main__":
         """, (sys.argv[4], )
     )
     rows = c.fetchall()
-    print(*(rows), sep=", ")
+    print(*(row[0] for row in rows), sep=", ")
