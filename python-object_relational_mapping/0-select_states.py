@@ -1,0 +1,13 @@
+"""python script to get states from db using ORM"""
+
+
+if __name__ == '__main__':
+    import MySQLdb
+    import sys
+
+
+    db=MySQLdb.connect(host="localhost:3306", user=sys.argv[1], password=sys.argv[2], database=sys.argv[3])
+    c = db.cursor()
+    states = c.execute("""SELECT states.name FROM states ORDER BY states.id ASC""")
+    for state in states:
+        print(state)
