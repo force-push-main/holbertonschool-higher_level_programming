@@ -10,6 +10,7 @@ if __name__ == '__main__':
 
     db=MySQLdb.connect(user=sys.argv[1], password=sys.argv[2], database=sys.argv[3])
     c = db.cursor()
-    states = c.execute("""SELECT states.name FROM states ORDER BY states.id ASC""")
-    for state in states:
-        print(state)
+    c.execute("""SELECT states.name FROM states ORDER BY states.id ASC""")
+    rows = c.fetchall()
+    for row in rows:
+        print(row)
