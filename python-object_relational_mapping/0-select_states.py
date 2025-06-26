@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 """python script to get states from db using ORM"""
 
 
