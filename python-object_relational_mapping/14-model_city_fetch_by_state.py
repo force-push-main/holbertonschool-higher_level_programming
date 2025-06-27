@@ -13,6 +13,6 @@ if __name__ == "__main__":
         f"mysql://{sys.argv[1]}:{sys.argv[2]}@localhost/{sys.argv[3]}"
         )
     session = Session(engine)
-    results = session.query(State, City).join(City).all()
+    results = session.query(City).all()
     for row in results:
-        print(row)
+        print(row.name)
