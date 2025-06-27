@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""class with a model for the states stable"""
+
 
 if __name__ == '__main__':
     from sqlalchemy import create_engine, Column, String, Integer, MetaData
