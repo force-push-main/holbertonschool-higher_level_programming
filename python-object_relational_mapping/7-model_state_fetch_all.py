@@ -8,11 +8,10 @@ if __name__ == "__main__":
     import sys
 
     url = "mysql+mysqldb://{}:{}@localhost/{}".format(sys.argv[1], sys.argv[2], sys.argv[3])
-    engine = create_engine(url)
+    engine = create_engine(url, pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    result = session.query(State).order_by(State.id)
-
-    print(result)
+    for row in session.query(State).order_by(State.id):
+        print(row)
 
     # *(f"{row.id}: {row.name}" for row in result)
