@@ -3,6 +3,7 @@
 
 
 if __name__ == '__main__':
+    """State class"""
     from sqlalchemy import create_engine, Column, String, Integer, MetaData
     from sqlalchemy.ext.declarative import declarative_base
 
