@@ -11,7 +11,7 @@ if __name__ == "__main__":
     engine = create_engine(url)
     Session = sessionmaker(bind=engine)
     session = Session()
-    result = session.query(State.id, State.name).order_by(State.id)
+    result = session.query(State).order_by(State.id)
 
     print(result)
 
