@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 """script that lists all state objects from db"""
 
-from model_state import Base, State
+from model_state import State
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 import sys
 
 url = f"mysql+mysqldb://{sys[1]}:{sys[2]}@localhost/{sys[3]}" 
 engine = create_engine(url)
-c = engine.connect()
-result = c.execute("SELECT id, name FROM State SORT BY id ASC")
+Session = sessionmaker(bind=engine)
+session = Session()
+result = session.query(State.id, State.name).order_by(State.id)
 
-print(result.fetchall())
+print(f"{row.id}: {row.name}" for row in result)
