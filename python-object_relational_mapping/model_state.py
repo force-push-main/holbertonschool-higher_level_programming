@@ -6,8 +6,8 @@ from sqlalchemy import create_engine, Column, String, Integer, MetaData
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
-engine = create_engine("mysql://root:root@localhost/hbtn_0e_6_usa")
-Base.metadata.create_all(engine)
+# engine = create_engine("mysql://root:root@localhost/hbtn_0e_6_usa")
+# Base.metadata.create_all(engine)
 
 
 class State(Base):
