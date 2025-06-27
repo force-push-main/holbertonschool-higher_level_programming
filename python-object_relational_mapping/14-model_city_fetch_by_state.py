@@ -4,7 +4,7 @@
 
 if __name__ == "__main__":
     import sys
-    from sqlalchemy import create_engine
+    from sqlalchemy import create_engine, join, select
     from sqlalchemy.orm import Session
     from model_city import City
     from model_state import State
@@ -13,6 +13,7 @@ if __name__ == "__main__":
         f"mysql://{sys.argv[1]}:{sys.argv[2]}@localhost/{sys.argv[3]}"
         )
     session = Session(engine)
-    results = session.query(City).join(State).all()
+    stmt = select(City).join(State, City.state_id == State.id)
+    results = session.execute(stmt)
     for row in results:
         print(row)
