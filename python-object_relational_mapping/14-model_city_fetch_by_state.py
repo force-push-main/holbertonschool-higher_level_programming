@@ -16,4 +16,4 @@ if __name__ == "__main__":
     stmt = select(City).join(State, City.state_id == State.id)
     results = session.execute(stmt)
     for row in results:
-        print(f"{row.State.name}: ({row.City.id}) {row.City.name}")
+        print(f"{row.name}: ({row.id}) {row.name}")
