@@ -15,5 +15,5 @@ if __name__ == "__main__":
     session = Session()
 
     result = session.query(State.id, State.name).first()
-    for row in result:
-        print(f"{row[0]}: {row[1]}")
+    if result != None:
+        print(f"{result[0]}: {result[1]}")
