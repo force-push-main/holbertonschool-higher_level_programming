@@ -17,3 +17,4 @@ if __name__ == "__main__":
     results = session.execute(stmt)
     for row in results:
         print(row.City.name)
+        print(row.State.name)
