@@ -11,7 +11,7 @@ if __name__ == "__main__":
     engine = create_engine(
         f"mysql://{sys.argv[1]}:{sys.argv[2]}@localhost/{sys.argv[3]}"
         )
-    Session = sessionmaker(engine)
+    Session = sessionmaker(bind=engine)
     session = Session()
 
     result = (session.query(State.id)
