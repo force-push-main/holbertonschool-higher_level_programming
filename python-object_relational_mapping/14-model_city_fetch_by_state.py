@@ -13,9 +13,10 @@ if __name__ == "__main__":
         f"mysql://{sys.argv[1]}:{sys.argv[2]}@localhost/{sys.argv[3]}"
         )
     session = Session(engine)
-    stmt = (select(City, State)
-            .join(State, City.state_id == State.id)
-            .order_by(City.id))
-    results = session.execute(stmt)
+    # stmt = (select(City, State)
+    #         .join(State, City.state_id == State.id)
+    #         .order_by(City.id))
+    # results = session.execute(stmt)
+    results = session.query(City, State).join(State, City.state_id == State.id).order_by(City.id)
     for city, state in results:
         print(f"{state.name}: ({city.id}) {city.name}")
