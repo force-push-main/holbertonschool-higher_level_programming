@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import sys
 
-url = f"mysql+mysqldb://root:root@localhost/hbtn_0e_6_usa"
+url = "mysql+mysqldb://{}:{}@localhost/{}".format(sys.argv[1], sys.argv[2], sys.argv[3])
 engine = create_engine(url)
 Session = sessionmaker(bind=engine)
 session = Session()
