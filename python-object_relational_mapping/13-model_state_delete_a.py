@@ -13,6 +13,6 @@ if __name__ == "__main__":
         )
     session = Session(engine)
     stmt = (delete(State)
-            .where(State.name.contains('s')))
+            .where(State.name.contains('a')))
     session.execute(stmt)
     session.commit()
