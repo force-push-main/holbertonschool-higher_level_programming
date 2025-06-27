@@ -16,5 +16,4 @@ if __name__ == "__main__":
     stmt = select(City, State).join(State, City.state_id == State.id).order_by(City.id)
     results = session.execute(stmt)
     for city, state in results:
-        print(city.name)
-        print(state.name)
+        print(f"{state.name}: ({city.id}) {city.name}")
