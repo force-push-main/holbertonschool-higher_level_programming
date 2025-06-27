@@ -15,9 +15,8 @@ if __name__ == "__main__":
     session = Session()
 
     result = (session.query(State.id)
-              .filter_by(State.name == sys.argv[4])
-              .first())
+              .filter_by(State.name == sys.argv[4]))
     if result is not None:
         print(result[0])
     else:
-        print("Nothing")
+        print("Not found")
