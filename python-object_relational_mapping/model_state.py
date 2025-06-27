@@ -11,6 +11,7 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
 
     class States(Base):
+        """State class"""
         __table__name = 'states'
         id = Column(Integer,
                     primary_key=True,
