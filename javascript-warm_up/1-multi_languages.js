@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
-const print_array = ['C is fun', 'Python is cool', 'Javascript is amazing'];
+const printArray = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
 
-print_array.forEach((el) => {
+printArray.forEach((el) => {
   console.log(el);
 });
