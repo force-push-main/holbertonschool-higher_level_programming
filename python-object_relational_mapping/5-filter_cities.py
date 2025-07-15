@@ -23,5 +23,6 @@ if __name__ == "__main__":
         ORDER BY cities.id ASC
         """, (sys.argv[4], )
     )
+
     rows = c.fetchall()
     print(*(row[0] for row in rows), sep=", ")

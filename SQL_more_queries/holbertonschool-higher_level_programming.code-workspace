@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../holbertonschool-hbnb"
+		},
+		{
+			"path": "../../holbertonschool-web_front_end"
+		}
+	],
+	"settings": {}
+}
