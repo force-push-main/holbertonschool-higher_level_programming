@@ -2,7 +2,8 @@
 
 const { argv } = require('node:process');
 
-const findFactorial = (a) => {
+// prettier-ignore
+function findFactorial (a) {
   if (isNaN(a)) {
     return NaN;
   }
@@ -10,7 +11,7 @@ const findFactorial = (a) => {
     return a;
   }
   return a * findFactorial(a - 1);
-};
+}
 
 const factorial = findFactorial(argv[2]);
 if (factorial === 1) {
