@@ -2,12 +2,12 @@
 
 const { argv } = require('node:process');
 
-const raw_arr = argv.slice(2);
-const num_arr = raw_arr.map(Number);
+const rawArr = argv.slice(2);
+const numArr = rawArr.map(Number);
 
 // prettier-ignore
 function compareNumbers (a, b) {
-    return a - b
+  return a - b;
 }
 
 // prettier-ignore
@@ -19,4 +19,4 @@ function findSecondBiggest (arr) {
   return arr[arr.length - 2];
 }
 
-console.log(findSecondBiggest(num_arr));
+console.log(findSecondBiggest(numArr));
