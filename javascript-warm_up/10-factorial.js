@@ -13,9 +13,4 @@ function findFactorial (a) {
   return a * findFactorial(a - 1);
 }
 
-const factorial = findFactorial(argv[2]);
-if (factorial === 1) {
-  console.log(NaN);
-} else {
-  console.log(findFactorial(argv[2]));
-}
+console.log(findFactorial(argv[2]));
