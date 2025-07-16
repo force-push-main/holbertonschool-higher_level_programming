@@ -5,7 +5,7 @@ const { argv } = require('node:process');
 // prettier-ignore
 function findFactorial (a) {
   if (isNaN(a)) {
-    return NaN;
+    return 1;
   }
   if (a === 1) {
     return a;
