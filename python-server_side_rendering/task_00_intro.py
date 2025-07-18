@@ -15,10 +15,18 @@ def generate_invitations(template, attendees):
             raise ValueError('No data provided, no output files generated.')
 
         template_fields = re.findall(r"\{(.*?)\}", template)
+        if len(template_fields) == 0:
+            for i in attendees:
+                if os.path.exists(f'output_{i}.txt'):
+                    raise ValueError('email already created')
+                with open(f'output_{i}.txt', 'w') as f:
+                    f.write(template)
+            return
+
         for key in template_fields:
             for row in attendees:
                 if key not in row:
-                    row[value] = 'N/A'
+                    row[key] = 'N/A'
 
         edited_list = []
         for row in attendees:
@@ -29,7 +37,7 @@ def generate_invitations(template, attendees):
             edited_list.append(working_template)
 
         for i, email in enumerate(edited_list):
-            if os.path.exists(f'output-{i}.txt'):
+            if os.path.exists(f'output_{i}.txt'):
                 raise ValueError('email already created')
             with open(f'output_{i}.txt', 'w') as f:
                 f.write(email)
