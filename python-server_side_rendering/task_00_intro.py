@@ -18,7 +18,7 @@ def generate_invitations(template, attendees):
         if len(template_fields) == 0:
             for i in attendees:
                 if os.path.exists(f'output_{i + 1}.txt'):
-                    raise ValueError('email already created')
+                    raise ValueError('Email already created')
                 with open(f'output_{i}.txt', 'w') as f:
                     f.write(template)
             return
@@ -38,7 +38,7 @@ def generate_invitations(template, attendees):
 
         for i, email in enumerate(edited_list):
             if os.path.exists(f'output_{i + 1}.txt'):
-                raise ValueError('email already created')
+                raise ValueError('Email already created')
             with open(f'output_{i + 1}.txt', 'w') as f:
                 f.write(email)
     except Exception as e:
