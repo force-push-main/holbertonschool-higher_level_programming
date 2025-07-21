@@ -26,26 +26,22 @@ def items():
 
 @app.route('/products')
 def products():
+    data = []
+    matrix = []
     if request.args.get('source') == 'json':
-        data = []
         with open('products.json', 'r') as f:
             data = json.load(f)
         if request.args.get('id'):
-            data = [row for row in data if row['id'] == int(request.args.get('id'))]
-        if len(data) == 0:
-            return render_template('product_display.html', data='no product')
-        return render_template('product_display.html', data=data)
-    if request.args.get('source') == 'csv':
-        matrix = []
+            matrix = [row for row in data if row['id'] == int(request.args.get('id'))]
+        else:
+            matrix = data
+    elif request.args.get('source') == 'csv':
         with open('products.csv', mode='r', newline='') as f:
             data = csv.DictReader(f)
             matrix = [row for row in data]
         if request.args.get('id'):
             matrix = [row for row in matrix if row['id'] == request.args.get('id')]
-        if len(matrix) == 0:
-            return render_template('product_display.html', data='no product')
-        return render_template('product_display.html', data=matrix)
-    if request.args.get('source') == 'sql':
+    elif request.args.get('source') == 'sql':
         conn = sqlite3.connect('products.db')
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
@@ -59,10 +55,11 @@ def products():
         fields = [column[0] for column in cursor.description]
         matrix = [{key: value for key, value in zip(fields, row)} for row in res]
         conn.close()
-        if len(matrix) == 0:
-            return render_template('product_display.html', data='no product')
-        return render_template('product_display.html', data=matrix)
-    return render_template('product_display.html', data='error')
+    else:
+        matrix = 'error'
+    if len(matrix) == 0:
+        matrix = 'no product'
+    return render_template('product_display.html', data=matrix)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
