@@ -9,10 +9,10 @@
 
 <body>
     <ul>
-        {%if data['items'] | length == 0%}
+        {%if items['items'] | length == 0%}
         <li>No items found</li>
         {%else%}
-        {%for item in data['items']%}
+        {%for item in items['items']%}
         <li>{{item}}</li>
         {%endfor%}
         {%endif%}
