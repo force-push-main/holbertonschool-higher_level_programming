@@ -9,7 +9,7 @@
 
 <body>
     <ul>
-        {%if items['items'] | length == 0%}
+        {%if not items}
         <li>No items found</li>
         {%else%}
         {%for item in items['items']%}
