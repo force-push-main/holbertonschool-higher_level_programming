@@ -1,4 +1,4 @@
-// ----- creates onclick function for HTML's native onClick method -----
+// ----- creates toggle feature using HTML's native onClick method -----
 
 // const toggleColor = () => {
 //   const header = document.querySelector('header');
